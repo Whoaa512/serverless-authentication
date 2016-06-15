@@ -1,5 +1,4 @@
 import { Utils } from './utils';
-import Promise from 'any-promise';
 import request from 'request';
 
 /**
