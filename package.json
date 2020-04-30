@@ -20,7 +20,8 @@
     "decamelize": "^1.2.0",
     "jsonwebtoken": "^5.7.0",
     "lodash": "^4.6.0",
-    "request": "^2.69.0"
+    "request": "^2.69.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-cli": "^6.6.4",
@@ -37,9 +38,11 @@
   },
   "scripts": {
     "compile": "rm -rf lib/* && ./node_modules/.bin/babel src --out-dir lib",
-    "prepublish": "npm run compile-test",
+    "prepublish": "npm run snyk-protect && npm run compile-test",
     "test": "./node_modules/.bin/mocha specs/",
     "compile-test": "npm run compile && npm test",
-    "lint": "eslint ./src ./specs || true"
-  }
+    "lint": "eslint ./src ./specs || true",
+    "snyk-protect": "snyk protect"
+  },
+  "snyk": true
 }
